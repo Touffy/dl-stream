@@ -1,0 +1,20 @@
+{
+  "name": "dl-stream",
+  "version": "1.0.0",
+  "description": "A specialized WHATWG Stream for seamlessly queueing many downloads",
+  "browser": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Touffy/dl-stream.git"
+  },
+  "keywords": [
+    "fetch",
+    "stream",
+    "download"
+  ],
+  "author": "David Junger <tffy@free.fr>",
+  "license": "MIT"
+}
