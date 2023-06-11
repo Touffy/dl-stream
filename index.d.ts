@@ -20,7 +20,7 @@ export class DownloadStream extends ReadableStream<Response> implements AsyncIte
   constructor(
     requests: AsyncOrNotIterableOrIterator<RequestInfo>,
     strategy?: QueuingStrategy<Response>,
-    controllerAbortSignal?: AbortSignal
+    streamController?: AbortController
   )
   [Symbol.asyncIterator](): AsyncIterator<Response>
 }
