@@ -19,7 +19,8 @@ type AsyncOrNotIterableOrIterator<T> = Iterable<T> | Iterator<T> | AsyncIterable
 export class DownloadStream extends ReadableStream<Response> implements AsyncIterable<Response> {
   constructor(
     requests: AsyncOrNotIterableOrIterator<RequestInfo>,
-    strategy?: QueuingStrategy<Response>
+    strategy?: QueuingStrategy<Response>,
+    streamController?: AbortController
   )
   [Symbol.asyncIterator](): AsyncIterator<Response>
 }

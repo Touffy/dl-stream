@@ -1,7 +1,6 @@
 class DownloadStream extends ReadableStream {
-  constructor(requests, strategy = { highWaterMark: 3 }) {
+  constructor(requests, strategy = { highWaterMark: 3 }, controller = new AbortController()) {
     const promises = []
-    const controller = new AbortController()
     const iterator = 'next' in requests ? requests
     : requests[Symbol.iterator in requests ? Symbol.iterator : Symbol.asyncIterator]()
     super({
