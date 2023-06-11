@@ -1,6 +1,7 @@
 class DownloadStream extends ReadableStream {
-  constructor(requests, strategy = { highWaterMark: 3 }, controller = new AbortController()) {
+  constructor(requests, strategy = { highWaterMark: 3 }, controllerAbortSignal) {
     const promises = []
+    const signal = controllerAbortSignal ?? (new AbortController()).signal
     const iterator = 'next' in requests ? requests
     : requests[Symbol.iterator in requests ? Symbol.iterator : Symbol.asyncIterator]()
     super({
@@ -9,7 +10,7 @@ class DownloadStream extends ReadableStream {
         while (i--) {
           const { done, value } = await iterator.next()
           if (done) return ctrl.close()
-          const promise = fetch(value, { signal: controller.signal })
+          const promise = fetch(value, { signal: signal })
           promises.push(promise)
         }
         ctrl.enqueue(await promises.shift())
