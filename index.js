@@ -9,11 +9,12 @@ export class DownloadStream extends ReadableStream {
         let i = ctrl.desiredSize - promises.length
         while (i--) {
           const { done, value } = await iterator.next()
-          if (done) return ctrl.close()
+          if (done) break
           const promise = fetch(value, { signal: controller.signal })
           promises.push(promise)
         }
-        ctrl.enqueue(await promises.shift())
+        if (promises.length) ctrl.enqueue(await promises.shift())
+        else ctrl.close()
       },
       cancel(e) {
         controller.abort(e)

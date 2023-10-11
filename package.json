@@ -1,6 +1,6 @@
 {
   "name": "dl-stream",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A specialized WHATWG Stream for seamlessly queueing many downloads",
   "browser": "index.js",
   "module": "index.js",
