@@ -72,12 +72,12 @@ Of course, client-zip is not the only one that can benefit from a DownloadStream
 ```js
 const { readable, writable } = new conflux.Writer()
 downloadStream.pipeThrough(new TransformStream({
-  transform({ body, url, headers }) {
-    return {
+  transform({ body, url, headers }, controller) {
+    controller.enqueue({
       name: 'get the filename somehow',
       lastModified: new Date(headers.get('Last-Modified')),
       stream: () => body
-    }
+    })
   }
 }, { highWaterMark: 1 })).pipeTo(writable)
 ```
