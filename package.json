@@ -4,8 +4,8 @@
   "description": "A specialized WHATWG Stream for seamlessly queueing many downloads",
   "browser": "index.js",
   "exports": {
-    "default": "./index.js",
-    "types": "./index.d.ts"
+    "types": "./index.d.ts",
+    "default": "./index.js"
   },
   "types": "index.d.ts",
   "type": "module",
